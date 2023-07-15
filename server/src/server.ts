@@ -31,12 +31,13 @@ export default {
 
     actor.subscribe(async (state) => {
       console.log("new state value", JSON.stringify(state?.value));
+      const persistedState = actor.getPersistedState();
       // Persisting hangs forever?
-      // await room.storage.put("state", state);
+      // await room.storage.put("state", persistedState);
       room.broadcast(
         JSON.stringify({
           type: "snapshot",
-          state: actor.getPersistedState(),
+          state: persistedState,
           nextEvents: state.nextEvents,
         }),
         []

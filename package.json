@@ -1,0 +1,10 @@
+{
+  "name": "partykit-xstate-demo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tom Sherman",
+  "license": "MIT"
+}

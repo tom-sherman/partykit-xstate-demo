@@ -1,0 +1,15 @@
+{
+  "name": "partykit-xstate-server",
+  "private": true,
+  "scripts": {
+    "dev": "partykit dev src/server.ts"
+  },
+  "author": "Tom Sherman",
+  "license": "MIT",
+  "dependencies": {
+    "@cloudflare/workers-types": "^4.20230710.1",
+    "partykit": "0.0.0-f26bb08",
+    "typescript": "^5.1.6",
+    "xstate": "5.0.0-beta.18"
+  }
+}

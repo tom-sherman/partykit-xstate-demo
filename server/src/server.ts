@@ -16,18 +16,17 @@ export default {
     console.log("new connection", connection.id);
     const initialState = (await room.storage.get("state")) ?? undefined;
 
-    if (initialState) {
-      connection.send(
-        JSON.stringify({
-          type: "snapshot",
-          state: initialState,
-        })
-      );
-    }
-
     const actor = interpret(donutMachine, {
       state: initialState,
     }).start();
+
+    connection.send(
+      JSON.stringify({
+        type: "snapshot",
+        state: initialState,
+        nextEvents: actor.getSnapshot().nextEvents,
+      })
+    );
 
     actor.subscribe(async (state) => {
       console.log("new state value", JSON.stringify(state?.value));

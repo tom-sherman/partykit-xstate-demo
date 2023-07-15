@@ -1,0 +1,4 @@
+{
+  "name": "partykit-xstate-demo",
+  "main": "src/server.ts"
+}

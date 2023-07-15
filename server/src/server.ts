@@ -32,8 +32,11 @@ export default {
     actor.subscribe(async (state) => {
       console.log("new state value", JSON.stringify(state?.value));
       const persistedState = actor.getPersistedState();
-      // Persisting hangs forever?
-      // await room.storage.put("state", persistedState);
+      await room.storage.put(
+        "state",
+        // PersistedState is not serializable, so we need to clone it
+        JSON.parse(JSON.stringify(persistedState))
+      );
       room.broadcast(
         JSON.stringify({
           type: "snapshot",
